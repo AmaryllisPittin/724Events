@@ -19,24 +19,33 @@ export const api = {
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [last, setLast] = useState(null);
+
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const apiData = await api.loadData();
+      if(apiData && apiData.events.length > 0) {
+        setData(apiData);
+        setLast(apiData.events[apiData.events.length - 1]);
+      }
     } catch (err) {
       setError(err);
     }
   }, []);
+
   useEffect(() => {
-    if (data) return;
-    getData();
-  });
-  
+    if (!data) { 
+      getData();
+    }
+  }, [data, getData]);
+
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
         error,
+        last,
       }}
     >
       {children}

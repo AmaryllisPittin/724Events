@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from "@testing-library/react";
 import EventCard from "./index";
 
@@ -45,4 +46,25 @@ describe("When a event card is created", () => {
       expect(cardElement.className.includes("EventCard--small")).toEqual(true);
     });
   });
+});
+
+
+
+describe('EventCard', () => {
+  test('should render the most recent event when small is true', () => {
+    const event = {
+      id: 3,
+      title: 'Event 3',
+      type: 'Type 1',
+      date: '2024-04-07',
+      cover: 'image3.jpg',
+    };
+
+    const { getByText } = render(<EventCard small {...event} />);
+    
+    expect(getByText('Event 3')).toBeInTheDocument();
+    // Ajoutez d'autres assertions si nécessaire pour le rendu de la carte d'événement avec small=true
+  });
+
+  // Écrivez d'autres tests pour d'autres cas de rendu de la carte d'événement si nécessaire
 });

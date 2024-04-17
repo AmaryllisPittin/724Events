@@ -45,7 +45,7 @@ const Slider = () => {
                 <input
                   key={`${focusEvent.id}`}
                   type="radio"
-                  name={`radio-button-${index}`} // Utilisation de l'index pour rendre les noms uniques
+                  name={`radio-button-${index}`}
                   checked={focusIndex === currentIndex}
                 />
               ))}
