@@ -26,7 +26,7 @@ const Slider = () => {
 
   return (
     <div className="SlideCardList">
-      {data.focus.map((event, index) => (
+      {data.focus.slice().reverse().map((event, index) => (
         <div
           key={event.id}
           className={`SlideCard SlideCard--${index === currentIndex ? "display" : "hide"}`}
@@ -43,10 +43,11 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {data.focus.map((focusEvent, focusIndex) => (
                 <input
-                  key={`${focusEvent.id}`}
+                  key={`${(() => (focusIndex)) ()}`}
                   type="radio"
                   name={`radio-button-${index}`}
                   checked={focusIndex === currentIndex}
+                  onChange={() => {}}
                 />
               ))}
             </div>

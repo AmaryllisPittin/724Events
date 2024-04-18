@@ -30,7 +30,6 @@ const EventCard = (props) => {
   return (
     <div data-testid="card-testid" className={`EventCard${small ? " EventCard--small" : ""}`} {...rest}>
       <div className="EventCard__imageContainer">
-        {/* Utilisation de l'image source mise à jour */}
         {imageSrc && <img data-testid="card-image-testid" src={imageSrc} alt={imageAlt} />}
         <div className="EventCard__label">{label}</div>
       </div>
