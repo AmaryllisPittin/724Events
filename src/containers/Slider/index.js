@@ -28,7 +28,7 @@ const Slider = () => {
     <div className="SlideCardList">
       {data.focus.slice().reverse().map((event, index) => (
         <div
-          key={event.id}
+        key={`${event.date}`}
           className={`SlideCard SlideCard--${index === currentIndex ? "display" : "hide"}`}
         >
           <img src={event.cover} alt="forum" />
@@ -43,7 +43,7 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {data.focus.map((focusEvent, focusIndex) => (
                 <input
-                  key={`${(() => (focusIndex)) ()}`}
+                  key={`dot-${focusEvent.date}`}
                   type="radio"
                   name={`radio-button-${index}`}
                   checked={focusIndex === currentIndex}
