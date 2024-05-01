@@ -24,9 +24,13 @@ export const DataProvider = ({ children }) => {
   const getData = useCallback(async () => {
     try {
       const apiData = await api.loadData();
-      if(apiData && apiData.events.length > 0) {
+
+      if(apiData) {
         setData(apiData);
-        setLast(apiData.events[apiData.events.length - 1]);
+        if(apiData.events.length > 0) {
+          setLast(apiData.events[apiData.events.length - 1]);
+        }
+        
       }
     } catch (err) {
       setError(err);
