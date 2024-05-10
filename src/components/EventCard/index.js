@@ -8,7 +8,7 @@ const EventCard = (props) => {
     imageAlt,
     date: propDate,
     title: propTitle,
-    label,
+    label: propLabel,
     small = false,
     events = [],
     ...rest
@@ -17,6 +17,7 @@ const EventCard = (props) => {
   let imageSrc = propImageSrc;
   let title = propTitle;
   let date = propDate ? new Date(propDate) : new Date();
+  let label = propLabel;
 
   // Logique pour gérer small
   if (small && events.length > 0) {
@@ -24,6 +25,7 @@ const EventCard = (props) => {
     imageSrc = latestEvent.imageSrc;
     title = latestEvent.title;
     date = latestEvent.date ? new Date(latestEvent.date) : new Date();
+    label= latestEvent.label;
   }
   
 
