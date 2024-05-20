@@ -17,7 +17,6 @@ const Page = () => {
   const [success, setSuccess] = useState(false);
   const { data } = useData();
 
-  // Trier les événements par date et sélectionner le plus récent
   const last = data?.events
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 1)[0];
@@ -112,13 +111,13 @@ const Page = () => {
                 </p>
               </div>
             }
-            opened={success} // Utilisez l'état de succès pour déterminer si le modal doit être ouvert
+            opened={success}
           >
             {({ setIsOpened }) => (
               <Form
                 onSuccess={() => {
                   setIsOpened(true);
-                  setSuccess(true); // Définissez success sur true lorsque le formulaire est soumis avec succès
+                  setSuccess(true);
                 }}
                 onError={() => null}
               />
